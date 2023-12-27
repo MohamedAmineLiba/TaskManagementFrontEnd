@@ -1,0 +1,65 @@
+<div class="flex items-center">
+    <div class="pr-10 w-[1200px]">
+        <img class="w-[1200px] h-[700px]" src="assets/gestion_des_taches.png" />
+            <div class="flex items-center">
+                <img class="w-[130px] h-[122px] mt-10 ml-10" src="assets/906334.png" />
+                <p class="text-center text-black text-7xl font-normal font-['Italianno'] mt-10 pl-20">Organize Your Tasks easily!</p>
+            </div>
+    </div>
+    <form class="mt-8 ml-10 w-[590px] h-[850px] bg-white bg-opacity-20 rounded-[54px] shadow border-8 border-black">
+        <div class="text-center text-black text-[58px] font-bold font-['Inter'] mt-5">Register</div>
+        <div class="text-black text-2xl font-medium font-['Inter'] pl-6">Last Name</div>
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-12">
+              <img src="assets/carte-didentite.png" alt="Icon" class="h-10 w-10s text-gray-400">
+            </div>
+                <input type="text" placeholder="Enter Your last name Here.." class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg">
+            </div>
+            <div class="text-black text-2xl font-medium font-['Inter'] pl-6 pt-2">First Name</div>
+            <div class="relative flex items-center">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-12">
+                  <img src="assets/carte-didentite.png" alt="Icon" class="h-10 w-10s text-gray-400">
+                </div>
+                <input 
+                  type="text" 
+                  placeholder="Enter Your first name Here.." 
+                  class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg"
+                >
+              </div>
+              <div class="text-black text-2xl font-medium font-['Inter'] pl-6 pt-2">E-mail</div>
+              <div class="relative flex items-center">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-12">
+                    <img src="assets/enveloppe-de-courrier-electronique.png" alt="Icon" class="h-10 w-10s text-gray-400">
+                  </div>
+                  <input 
+                    type="email" 
+                    placeholder="Enter Your E-mail Here.." 
+                    class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg"
+                  >
+                </div>
+                <div class="text-black text-2xl font-medium font-['Inter'] pl-6 pt-2">Username</div>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-12">
+                      <img src="assets/user-solid.png" alt="Icon" class="h-8 w-8s text-gray-400">
+                    </div>
+                        <input type="text" placeholder="Enter Your Username Here.." class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg">
+                    </div>
+                    <div class="text-black text-2xl font-medium font-['Inter'] pl-6 pt-2">Password</div>
+                    <div class="relative flex items-center">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-12">
+                          <img src="assets/key-solid.png" alt="Icon" class="h-8 w-8s text-gray-400">
+                        </div>
+                        <input 
+                          type="text" 
+                          placeholder="Enter Your Password Here.." 
+                          class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg"
+                        >
+                      </div>
+           <div class="w-full flex justify-center mt-6">
+            <button class="bg-black text-white w-[180px] py-4 rounded-xl font-bold text-2xl shadow-xl">Register</button>
+           </div>
+           <div class="w-full flex justify-center mt-3">
+            <button class="text-1xl" (click)="navigateToRegister()">Already Registered? Login here!</button>
+           </div>
+    
+    </form>
