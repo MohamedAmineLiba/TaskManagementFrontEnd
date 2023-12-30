@@ -3,7 +3,7 @@ import { Component, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
-import { JwtService } from '../jwt.service';
+import { JwtServiceLogin } from '../jwt.service';
 import { Token } from '@angular/compiler';
 
 
@@ -19,7 +19,7 @@ export class LoginPageComponent {
   password: string;
   hidePassword = true;
 
-  constructor( private jwtService : JwtService , private router: Router) { 
+  constructor( private jwtServiceLogin : JwtServiceLogin, private router: Router) { 
     this.username = '';
     this.password = '';
   }
@@ -27,7 +27,7 @@ export class LoginPageComponent {
   togglePasswordVisibility(): void {
     this.hidePassword = !this.hidePassword;
   }
-  navigateToRegister() {
+  navigateToRegister(){
     this.router.navigate(['/register']);
   }
 
@@ -35,20 +35,39 @@ export class LoginPageComponent {
     // Show error message in a popup window
     alert(message);
   }
-  onSubmit() {
+ 
+  onLogin() {
+    const user = {
+      username: this.username,
+      password: this.password
+    };
+    this.jwtServiceLogin.loginUser(user).subscribe(
+      res => {
+        console.log(res);
+        this.jwtServiceLogin.setUsername(res.user.username);
+        this.router.navigate(['/home']);
+      },
+      err => {
+        console.error(err);
+        alert('Username or password is wrong');
+      }
+    );
+  }
 
-    this.jwtService.generateJwt(this.username, this.password).subscribe({
-      next:(Token) => {
-       
-          console.log(Token);
+ /* onSubmit() {
+
+    this.jwtServiceLogin.generateJwtLogin(this.username, this.password).subscribe({
+      next:(token) => {
+          console.log(token);
+          localStorage.setItem('token', token);
           this.router.navigate(['/home']);
       },
       error:(error) => {
         console.error(error);
         alert('Username or password is wrong');
       }
-    }
-     
-    );
-  }
+    });
+    
+  }*/
+
 }

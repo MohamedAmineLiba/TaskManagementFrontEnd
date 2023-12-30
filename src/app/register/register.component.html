@@ -13,7 +13,8 @@
             <div class="absolute inset-y-0 left-0 flex items-center pl-12">
               <img src="assets/carte-didentite.png" alt="Icon" class="h-10 w-10s text-gray-400">
             </div>
-                <input type="text" placeholder="Enter Your last name Here.." class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg">
+                <input type="text" placeholder="Enter Your last name Here.." class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg"
+                id="nom" [(ngModel)]="nom" name="nom" required>
             </div>
             <div class="text-black text-2xl font-medium font-['Inter'] pl-6 pt-2">First Name</div>
             <div class="relative flex items-center">
@@ -24,6 +25,7 @@
                   type="text" 
                   placeholder="Enter Your first name Here.." 
                   class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg"
+                  id="prenom" [(ngModel)]="prenom" name="prenom" required
                 >
               </div>
               <div class="text-black text-2xl font-medium font-['Inter'] pl-6 pt-2">E-mail</div>
@@ -35,6 +37,7 @@
                     type="email" 
                     placeholder="Enter Your E-mail Here.." 
                     class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg"
+                    id="email" [(ngModel)]="email" name="email" required
                   >
                 </div>
                 <div class="text-black text-2xl font-medium font-['Inter'] pl-6 pt-2">Username</div>
@@ -42,7 +45,8 @@
                     <div class="absolute inset-y-0 left-0 flex items-center pl-12">
                       <img src="assets/user-solid.png" alt="Icon" class="h-8 w-8s text-gray-400">
                     </div>
-                        <input type="text" placeholder="Enter Your Username Here.." class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg">
+                        <input type="text" placeholder="Enter Your Username Here.." class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg"
+                        id="username" [(ngModel)]="username" name="username" required>
                     </div>
                     <div class="text-black text-2xl font-medium font-['Inter'] pl-6 pt-2">Password</div>
                     <div class="relative flex items-center">
@@ -53,10 +57,12 @@
                           type="text" 
                           placeholder="Enter Your Password Here.." 
                           class="w-[522px] h-[70px] pl-20 bg-neutral-100 rounded-[13px] ml-6 mt-1 border border-black font-normal text-lg"
+                          id="password" [(ngModel)]="password" name="password" required
                         >
                       </div>
            <div class="w-full flex justify-center mt-6">
-            <button class="bg-black text-white w-[180px] py-4 rounded-xl font-bold text-2xl shadow-xl">Register</button>
+            <button class="bg-black text-white w-[180px] py-4 rounded-xl font-bold text-2xl shadow-xl"
+            (click)="onRegister()">Register</button>
            </div>
            <div class="w-full flex justify-center mt-3">
             <button class="text-1xl" (click)="navigateToRegister()">Already Registered? Login here!</button>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RegisterComponent } from '../register/register.component';
 import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Token } from '@angular/compiler';
 
 
 @Component({

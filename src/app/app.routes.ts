@@ -8,7 +8,7 @@ import { ManageTasksComponent } from './manage-tasks/manage-tasks.component';
 
 
 export const routes: Routes = [
-    {path : '' , redirectTo : 'login' , pathMatch : 'full'},
+    { path : '' , redirectTo : 'login' , pathMatch : 'full'},
     { path: 'login', component: LoginPageComponent },
     { path: 'register', component: RegisterComponent },
     { path :'home' , component : HomeComponent},
