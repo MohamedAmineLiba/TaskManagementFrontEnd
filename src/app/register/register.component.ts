@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Token } from '@angular/compiler';
-import { RegisterService } from '../register.service';
+import { RegisterService } from '../services/register.service';
 
 @Component({
   selector: 'app-register',

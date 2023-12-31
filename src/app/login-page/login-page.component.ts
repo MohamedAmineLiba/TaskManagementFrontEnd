@@ -1,10 +1,11 @@
 import { CommonModule, NgClass } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
-import { JwtServiceLogin } from '../jwt.service';
-import { Token } from '@angular/compiler';
+import { UserService } from '../services/user.service';
+import { LoginResponse } from '../type/LoginReponse';
+import { UserDataService } from '../services/user-data.service';
 
 
 @Component({
@@ -15,13 +16,14 @@ import { Token } from '@angular/compiler';
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
-  username: string;
-  password: string;
+  loginForm: FormGroup;
   hidePassword = true;
 
-  constructor( private jwtServiceLogin : JwtServiceLogin, private router: Router) { 
-    this.username = '';
-    this.password = '';
+  constructor( private router: Router , private userData : UserDataService ,private formBuilder: FormBuilder , private userService: UserService , private route:ActivatedRoute) { 
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   togglePasswordVisibility(): void {
@@ -36,22 +38,22 @@ export class LoginPageComponent {
     alert(message);
   }
  
-  onLogin() {
-    const user = {
-      username: this.username,
-      password: this.password
-    };
-    this.jwtServiceLogin.loginUser(user).subscribe(
-      res => {
-        console.log(res);
-        this.jwtServiceLogin.setUsername(res.user.username);
-        this.router.navigate(['/home']);
-      },
-      err => {
-        console.error(err);
-        alert('Username or password is wrong');
-      }
-    );
+  onSubmit() {
+    if (this.loginForm.valid) {
+      this.userService.authenticate(this.loginForm.value).subscribe({
+        next: (value : LoginResponse) => {
+          console.log(value);
+          this.userData.setUsername(value.user.username);
+          
+          this.router.navigate(['/NewTask']);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
  /* onSubmit() {

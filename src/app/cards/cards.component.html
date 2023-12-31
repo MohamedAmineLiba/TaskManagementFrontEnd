@@ -1,0 +1,27 @@
+<div *ngIf="loading">
+    <p>Loading...</p>
+  </div>
+  
+  <div *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+  
+  <div *ngIf="userResponse && !loading && !error" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-14 pl-8 pt-[150px]">
+    <div *ngFor="let task of userResponse.tasks" class="max-w-md w-[401px] h-[255px] mx-auto bg-zinc-300 rounded-xl shadow-md overflow-hidden" [ngClass]="{'max-w-full': showMore}">
+      <div class="md:flex">
+        <div class="p-8">
+          <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ task.label }}</div>
+          <p class="block mt-1 text-lg leading-tight font-medium text-black">{{ task.description }}</p>
+          <button class=" w-[118px] h-11 bg-teal-500 rounded-[30px] mt-2 text-indigo-500 hover:text-indigo-400 transition duration-150 ease-in-out" (click)="toggleShowMore()">
+            {{ showMore ? 'Show less' : 'Show more' }}
+          </button>
+          <div *ngIf="showMore">
+            <p>Status: {{ task.status }}</p>
+            <p>Start Date: {{ task.date_debut | date }}</p>
+            <p>End Date: {{ task.date_fin | date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

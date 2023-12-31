@@ -3,8 +3,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { NewTaskComponent } from './new-task/new-task.component';
-import { ConsultTasksComponent } from './consult-tasks/consult-tasks.component';
 import { ManageTasksComponent } from './manage-tasks/manage-tasks.component';
+import { ConsultTasksComponent } from './consult-tasks/consult-tasks.component';
 
 
 export const routes: Routes = [
