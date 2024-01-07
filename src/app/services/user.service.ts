@@ -1,19 +1,19 @@
 import { LoginRequest } from './../type/LoginRequest';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
 import { User } from '../type/User';
 import { MessageCors } from '../type/Message';
 import { LoginResponse } from '../type/LoginReponse';
 import { Task } from '../type/Task';
 import { UserResponse } from '../type/UserResponse';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private refreshTokenKey = '';
-  constructor(private http:HttpClient) { }
+  
+  constructor (private http:HttpClient) { }
 
   public getall() : Observable<User[]>{
     return this.http.get<User[]>("http://localhost:9090/api/users/userslist");
@@ -34,13 +34,14 @@ export class UserService {
     .pipe(
       tap(response => {
         if (response.refreshToken) {
-          localStorage.setItem(this.refreshTokenKey, response.refreshToken);
+          localStorage.setItem("username",response.user.username);
+          localStorage.setItem("refreshToken", response.refreshToken);
         }
       })
     );
   }
   addTask(username : string , task : Task):Observable<UserResponse>{
-    const refreshToken = localStorage.getItem(this.refreshTokenKey);
+    const refreshToken = localStorage.getItem("refreshToken");
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${refreshToken}`
@@ -48,7 +49,7 @@ export class UserService {
     return this.http.post<UserResponse>(`http://localhost:8081/USER-SERVICES/api/users/${username}`,task,{ headers });
   }
   getUserbyUsername(username:string): Observable<UserResponse>{
-    const refreshToken = localStorage.getItem(this.refreshTokenKey);
+    const refreshToken = localStorage.getItem("refreshToken");
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${refreshToken}`
@@ -57,7 +58,7 @@ export class UserService {
   }
 
   deleteUserTask(username:string,idTask : number) : Observable<string> {
-    const refreshToken = localStorage.getItem(this.refreshTokenKey);
+    const refreshToken = localStorage.getItem("refreshToken");
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${refreshToken}`
@@ -66,7 +67,7 @@ export class UserService {
   }
   
   updateUserTask(username:string,idtask:number,editedtask:Task):Observable<Task>{
-    const refreshToken = localStorage.getItem(this.refreshTokenKey);
+    const refreshToken = localStorage.getItem("refreshToken");
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${refreshToken}`

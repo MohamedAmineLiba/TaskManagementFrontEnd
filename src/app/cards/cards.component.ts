@@ -21,7 +21,7 @@ export class CardsComponent implements OnInit{
   constructor(private userService: UserService, private userDataService: UserDataService) {}
 
   ngOnInit() {
-    const username = this.userDataService.getUsername();
+    const username = localStorage.getItem("username");
 
     if (username) {
       this.userService.getUserbyUsername(username).pipe(
