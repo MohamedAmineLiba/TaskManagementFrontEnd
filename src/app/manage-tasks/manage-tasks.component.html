@@ -21,7 +21,7 @@
                 <td>{{ task.label }}</td>
                 <td>{{ task.description }}</td>
                 <td>
-                  <button (click)="openDialog(username,task)">edit</button>
+                  <button (click)="openEditDialog(task)">edit</button>
                   <button (click)="deleteTask(task.id)">Delete</button>
                 </td>
               </tr>
@@ -30,3 +30,6 @@
     </tbody>
   </table>
   
+
+<app-new-edited-task *ngIf="isEditDialogVisible" [tache]="editedTask" (saveClicked)="saveNewEditedTask()"
+(cancelClicked)="closeNewEditDialog()"></app-new-edited-task>

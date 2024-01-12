@@ -1,0 +1,46 @@
+<div class="fixed top-0 left-0 w-full h-full flex items-center justify-center">
+    <div class="absolute w-full h-full bg-gray-900 opacity-50"></div>
+    
+    <div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+      <div class="p-4">
+        <h4 class="text-lg font-semibold text-gray-800">Edit Task</h4>
+      </div>
+  
+      <div class="p-4">
+        <!-- Task form -->
+        <div class="form-group">
+          <label for="date_debut" class="text-sm text-gray-700">Date Debut:</label>
+          <input type="date" id="date_debut" name="date_debut" class="form-input" [(ngModel)]="tache.date_debut">
+        </div>
+        
+        <div class="form-group">
+          <label for="date_fin" class="text-sm text-gray-700">Date Fin:</label>
+          <input type="date" id="date_fin" name="date_fin" class="form-input" [(ngModel)]="tache.date_fin">
+        </div>
+        
+        <div class="form-group">
+          <label for="status" class="text-sm text-gray-700">Status:</label>
+          <input type="text" id="status" name="status" class="form-input" [(ngModel)]="tache.status">
+        </div>
+        
+        <div class="form-group">
+          <label for="label" class="text-sm text-gray-700">Label:</label>
+          <input type="text" id="label" name="label" class="form-input" [(ngModel)]="tache.label">
+        </div>
+        
+        <div class="form-group">
+          <label for="description" class="text-sm text-gray-700">Description:</label>
+          <textarea id="description" name="description" class="form-input" [(ngModel)]="tache.description"></textarea>
+        </div>
+        <!-- Add other task properties as needed -->
+      </div>
+  
+      <div class="p-4">
+        <div class="flex justify-end">
+          <button type="button" class="btn-secondary mr-2" (click)="onCancel()">Close</button>
+          <button type="submit" class="btn-primary font-semibold" (click)="onSave()">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
